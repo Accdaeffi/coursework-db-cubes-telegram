@@ -73,5 +73,31 @@ namespace CourseTelegramBot.cubeConnection
 
             return sb.ToString();
         }
+
+        public string executeQuery(string commandString)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            AdomdCommand command = new AdomdCommand(commandString, connection);
+            var data = command.ExecuteReader();
+
+            while (data.Read())
+            {
+                for (int i=0; i < data.FieldCount; i++)
+                {
+                    sb.Append(data[i]);
+                    if (i+1 != data.FieldCount)
+                    {
+                        sb.Append(',');
+                    } else
+                    {
+                        sb.AppendLine();
+                    }
+                }
+            }
+            data.Close();
+
+            return sb.ToString();
+        }
     }
 }
