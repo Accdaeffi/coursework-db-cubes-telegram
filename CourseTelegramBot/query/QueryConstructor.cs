@@ -9,10 +9,16 @@ namespace CourseTelegramBot.query
 {
     class QueryConstructor
     {
-        readonly HashSet<String> fields = new HashSet<String>();
+
         readonly HashSet<String> measures = new HashSet<String>();
+        readonly HashSet<String> fields = new HashSet<String>();
         readonly HashSet<String> whereParts = new HashSet<String>();
 
+        ///
+        /// <summary>Add new row in query constructor</summary>
+        ///
+        /// <returns>true, if succesfull, false if already exists</returns>
+        /// 
         public bool AddNewField(String fieldName, String selector = null)
         {
             /*
@@ -29,9 +35,10 @@ namespace CourseTelegramBot.query
         }
 
         ///
-        /// <summary>Add new measure in query constructor</summary>
+        /// <summary>Add new column in query constructor</summary>
         ///
-
+        /// <returns>true, if succesfull, false if already exists</returns>
+        /// 
         public bool AddNewMeasure(String measure)
         {
             /*
@@ -44,6 +51,11 @@ namespace CourseTelegramBot.query
 
         }
 
+        ///
+        /// <summary>Add new where clause in query constructor</summary>
+        ///
+        /// <returns>true, if succesfull, false if already exists</returns>
+        /// 
         public bool AddWherePart(String wherePart)
         {
             /*

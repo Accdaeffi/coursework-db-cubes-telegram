@@ -19,7 +19,7 @@ namespace CourseTelegramBot.bot.commands
         {
             MapUserInformation.CreateValue(userId);
 
-            return new StringResponse("Query succesfully created!");
+            return new StringResponse("Запрс успешно создан!");
         }
     }
 }

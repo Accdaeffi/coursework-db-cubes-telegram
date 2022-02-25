@@ -26,17 +26,19 @@ namespace CourseTelegramBot.bot.commands.addCommands
 
             if (info == null)
             {
-                responseString = "Create query first!";
+                responseString = "Сначала создайте запрос командой /create !";
             } else
             {
-                bool result = info.AddNewMeasure(measure);
-                if (result)
+                if (info.AddNewMeasure(measure))
                 {
-
+                    responseString = "Успешно добавлено!";
+                } else
+                {
+                    responseString = "Данная мера уже присутствует!";
                 }
             }
 
-            throw new NotImplementedException();
+            return new StringResponse(responseString);
         }
     }
 }
