@@ -8,12 +8,12 @@ namespace CourseTelegramBot.query
 {
     class MapUserInformation
     {
-        static Dictionary<long, QueryConstructor> data = new Dictionary<long, QueryConstructor>();
+        static readonly Dictionary<long, QueryConstructor> data = new Dictionary<long, QueryConstructor>();
 
-        public static bool CreateValue(long userId)
+        public static void CreateValue(long userId)
         {
             QueryConstructor info = new QueryConstructor();
-            return data.TryAdd(userId, info);
+            data.Add(userId, info);
         }
 
         public static QueryConstructor FindValue(long userId)
@@ -24,7 +24,7 @@ namespace CourseTelegramBot.query
             return info;
         }
 
-        public static bool eleteValue(long userId)
+        public static bool DeleteValue(long userId)
         {
             return data.Remove(userId);
         }

@@ -34,7 +34,18 @@ namespace CourseTelegramBot.bot
 
             Connection con = Connection.getConnection();
 
-            await botClient.SendTextMessageAsync(chat.Id, con.getAllInforamtion());
+            List<CubeInfo> cubes = Connection.getConnection().getCubesInforamtion();
+
+            if (cubes.Count > 0)
+            {
+                foreach (CubeInfo cube in cubes)
+                {
+                    await botClient.SendTextMessageAsync(chat.Id, cube.generateText());
+                }
+            } else 
+            {
+                await botClient.SendTextMessageAsync(chat.Id, "No cubes!");
+            }
         }
     }
 }

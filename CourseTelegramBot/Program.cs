@@ -12,7 +12,7 @@ namespace CourseTelegramBot
     {
         static async Task Main(string[] args)
         {
-            /*var Bot = new TelegramBotClient("5242884007:AAGfMy39Q9mLJgQyel2hd07kXcCe4vSkGCg");
+            var Bot = new TelegramBotClient("5242884007:AAGfMy39Q9mLJgQyel2hd07kXcCe4vSkGCg");
 
             var me = await Bot.GetMeAsync();
             Console.WriteLine($"Hello, World! I am user {me.Id} and my name is {me.FirstName}.");
@@ -24,30 +24,30 @@ namespace CourseTelegramBot
                                Handler.HandleErrorAsync,
                                receiverOptions);
 
-            */
+            
 
 
             /*String commandString = "SELECT {[Measures].[Sickness Fact Count]} ON COLUMNS, " +
                 "{[Doctor Dim].[Full Name].[Martin Ford]} ON ROWS " +
                 "FROM [sickness_cube] ";*/
 
-            UserInformation userInformation = new UserInformation();
+            /*UserInformation userInformation = new UserInformation();
 
             userInformation.AddNewField("[Doctor Dim].[Full Name].MEMBERS");
             userInformation.addNewMeasure("[Sickness Fact Count]");
 
-            String commandString = userInformation.compileQuery();
+            String commandString = userInformation.compileQuery();*/
 
             /*String commandString = "SELECT {[Measures].[Sickness Fact Count]} ON COLUMNS, " +
                 "({[Doctor Dim].[Full Name].MEMBERS}) ON ROWS " +
                 "FROM [sickness_cube] ";*/
 
 
-            Connection con = Connection.getConnection();
+            /*Connection con = Connection.getConnection();
             con.getAllInforamtion();
             String s = con.executeQuery(commandString);
 
-            Console.WriteLine(s);
+            Console.WriteLine(s);*/
 
             Console.ReadLine();
         }

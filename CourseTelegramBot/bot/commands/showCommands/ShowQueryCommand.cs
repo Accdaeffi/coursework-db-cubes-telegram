@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace CourseTelegramBot.bot.commands
 {
-    class CreateCommand : AbstractCommand
+    class ShowQueryCommand : AbstractCommand
     {
-        public CreateCommand(long userId)
+        public ShowQueryCommand(long userId)
         {
             this.userId = userId;
         }
 
         public override StringResponse execute()
         {
-            MapUserInformation.CreateValue(userId);
+            QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            return new StringResponse("Запрос успешно создан!");
+            return new StringResponse(queryConstructor.ShowAll());
         }
     }
 }

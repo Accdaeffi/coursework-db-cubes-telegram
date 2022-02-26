@@ -39,39 +39,18 @@ namespace CourseTelegramBot.cubeConnection
             return cube;
         }
 
-        public string getAllInforamtion() {
+        public List<CubeInfo> getCubesInforamtion() {
 
-            StringBuilder sb = new StringBuilder();
+            List<CubeInfo> cubes = new List<CubeInfo>();
 
             foreach (CubeDef cube in connection.Cubes)
             {
+
                 if (cube.Type != CubeType.Cube) continue;
-                sb.AppendLine("Cube: " + cube.Name);
-                Console.WriteLine("Cube: " + cube.Name);
-
-                foreach (Dimension dim in cube.Dimensions)
-                {
-                    if (dim.Name == "Measures") continue;
-                    sb.AppendLine("  Dimension: " + dim.Name);
-                    Console.WriteLine("  Dimension: " + dim.Name);
-
-                    foreach (Hierarchy hie in dim.Hierarchies)
-                    {
-                        sb.AppendLine("\tHierarchy: " + hie.Name);
-                        Console.WriteLine("\tHierarchy: " + hie.Name);
-                    }
-                }
-
-                sb.AppendLine("  Measures");
-                Console.WriteLine("  Measures");
-                foreach (Measure measure in cube.Measures)
-                {
-                    sb.AppendLine("\tFact: " + measure);
-                    Console.WriteLine("\tFact: " + measure);
-                }
+                cubes.Add(new CubeInfo(cube));
             }
 
-            return sb.ToString();
+            return cubes;
         }
 
         public string executeQuery(string commandString)
