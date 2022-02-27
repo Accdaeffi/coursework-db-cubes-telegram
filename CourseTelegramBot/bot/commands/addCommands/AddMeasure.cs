@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.addCommands
+namespace CourseTelegramBot.bot.commands
 {
     class AddMeasure : AbstractCommand
     {
         String measure;
 
-        public AddMeasure(String measure, long userId)
+        public AddMeasure(long userId, String measure)
         {
             this.measure = measure;
             this.userId = userId;

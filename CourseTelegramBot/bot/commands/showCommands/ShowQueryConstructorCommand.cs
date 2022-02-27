@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CourseTelegramBot.bot.commands
 {
-    class ShowQueryCommand : AbstractCommand
+    class ShowQueryConstructorCommand : AbstractCommand
     {
-        public ShowQueryCommand(long userId)
+        public ShowQueryConstructorCommand(long userId)
         {
             this.userId = userId;
         }

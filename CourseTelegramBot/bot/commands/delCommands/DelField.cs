@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.delCommands
+namespace CourseTelegramBot.bot.commands
 {
     class DelField : AbstractCommand
     {
         String field;
 
-        public DelField(String field, long userId)
+        public DelField(long userId, String field)
         {
             this.field = field;
             this.userId = userId;

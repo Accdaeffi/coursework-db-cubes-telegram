@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.queryManagmentCommands
+namespace CourseTelegramBot.bot.commands
 {
-    class CompileQuery : AbstractCommand
+    class CompileQueryCommand : AbstractCommand
     {
 
-        public CompileQuery(long userId)
+        public CompileQueryCommand(long userId)
         {
             this.userId = userId;
         }
@@ -25,7 +25,14 @@ namespace CourseTelegramBot.bot.commands.queryManagmentCommands
 
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            sb.AppendLine(queryConstructor.CompileQuery());
+            try
+            {
+                sb.AppendLine(queryConstructor.CompileQuery());
+            }
+            catch (NoColumnsException ex)
+            {
+                sb.Clear().AppendLine(ex.Message);
+            }
 
             return new StringResponse<String>(sb.ToString());
         }

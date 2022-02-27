@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.delCommands
+namespace CourseTelegramBot.bot.commands
 {
     class DelMeasure : AbstractCommand
     {
         String measure;
 
-        public DelMeasure(String measure, long userId)
+        public DelMeasure(long userId, String measure)
         {
             this.measure = measure;
             this.userId = userId;

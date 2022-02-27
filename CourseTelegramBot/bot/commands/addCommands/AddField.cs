@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.addCommands
+namespace CourseTelegramBot.bot.commands
 {
     class AddField : AbstractCommand
     {
         String field;
 
-        public AddField(String field, long userId)
+        public AddField(long userId, String field)
         {
             this.field = field;
             this.userId = userId;
@@ -30,7 +30,7 @@ namespace CourseTelegramBot.bot.commands.addCommands
             }
             else
             {
-                if (info.AddNewMeasure(field))
+                if (info.AddNewField(field))
                 {
                     responseString = "Succesfully added!";
                 }

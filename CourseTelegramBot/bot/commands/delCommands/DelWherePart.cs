@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.delCommands
+namespace CourseTelegramBot.bot.commands
 {
     class DelWherePart : AbstractCommand
     {
         String wherePart;
 
-        public DelWherePart(String wherePart, long userId)
+        public DelWherePart(long userId, String wherePart)
         {
             this.wherePart = wherePart;
             this.userId = userId;

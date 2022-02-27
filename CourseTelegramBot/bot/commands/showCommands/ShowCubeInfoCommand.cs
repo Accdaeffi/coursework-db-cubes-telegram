@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.showCommands
+namespace CourseTelegramBot.bot.commands
 {
     class ShowCubeInfoCommand : AbstractCommand
     {
         private string cubeName;
-        public ShowCubeInfoCommand(long userId, string cubeName)
+        public ShowCubeInfoCommand(long userId, string cubeName = null)
         {
             this.userId = userId;
             this.cubeName = cubeName;

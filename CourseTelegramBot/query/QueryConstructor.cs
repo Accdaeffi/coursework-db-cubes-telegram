@@ -56,7 +56,7 @@ namespace CourseTelegramBot.query
                 sb.AppendJoin('\n', measures);
             } else
             {
-                sb.AppendLine("No active Measures!");
+                sb.Append("No active Measures!");
             }
 
             return sb.ToString();
@@ -77,7 +77,7 @@ namespace CourseTelegramBot.query
                 sb.AppendJoin('\n', fields);
             } else
             {
-                sb.AppendLine("No active Fields!");
+                sb.Append("No active Fields!");
             }
 
             return sb.ToString();
@@ -98,7 +98,7 @@ namespace CourseTelegramBot.query
                 sb.AppendJoin('\n', whereParts);
             } else
             {
-                sb.AppendLine("No active Where clauses!");
+                sb.Append("No active Where clauses!");
             }
 
             return sb.ToString();

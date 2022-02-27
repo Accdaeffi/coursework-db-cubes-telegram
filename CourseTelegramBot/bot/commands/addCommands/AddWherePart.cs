@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands.addCommands
+namespace CourseTelegramBot.bot.commands
 {
     class AddWherePart : AbstractCommand
     {
         String wherePart;
 
-        public AddWherePart(String wherePart, long userId)
+        public AddWherePart(long userId, String wherePart)
         {
             this.wherePart = wherePart;
             this.userId = userId;
@@ -30,7 +30,7 @@ namespace CourseTelegramBot.bot.commands.addCommands
             }
             else
             {
-                if (info.AddNewMeasure(wherePart))
+                if (info.AddWherePart(wherePart))
                 {
                     responseString = "Succesfully added!";
                 }

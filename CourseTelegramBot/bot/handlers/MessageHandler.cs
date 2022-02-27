@@ -1,4 +1,6 @@
-﻿using CourseTelegramBot.cubeConnection;
+﻿using CourseTelegramBot.bot.commands;
+using CourseTelegramBot.bot.responses;
+using CourseTelegramBot.cubeConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace CourseTelegramBot.bot
 {
     class MessageHandler
     {
+        private static MessageParser parser = MessageParser.getParser(); 
+
         public static async Task Handle(ITelegramBotClient botClient, Message message) {
             Chat chat = message.Chat;
             User sender = null;
@@ -32,20 +36,11 @@ namespace CourseTelegramBot.bot
                 await botClient.SendTextMessageAsync(chat.Id, "Uncorrect sender or message type!");
             }
 
-            Connection con = Connection.getConnection();
+            AbstractCommand command = parser.parseMessage(sender.Id, messageText);
 
-            List<CubeInfo> cubes = Connection.getConnection().getCubesInforamtion();
+            AbstractResponse<String> response = command.execute();
 
-            if (cubes.Count > 0)
-            {
-                foreach (CubeInfo cube in cubes)
-                {
-                    await botClient.SendTextMessageAsync(chat.Id, cube.generateText());
-                }
-            } else 
-            {
-                await botClient.SendTextMessageAsync(chat.Id, "No cubes!");
-            }
+            response.send(botClient, chat.Id);
         }
     }
 }
