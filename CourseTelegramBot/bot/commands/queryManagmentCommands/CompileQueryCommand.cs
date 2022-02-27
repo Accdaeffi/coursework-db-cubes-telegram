@@ -25,13 +25,21 @@ namespace CourseTelegramBot.bot.commands
 
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            try
+            if (queryConstructor == null)
             {
-                sb.AppendLine(queryConstructor.CompileQuery());
+                sb.Clear().AppendLine("Create query first using /create command!");
             }
-            catch (NoColumnsException ex)
+            else
             {
-                sb.Clear().AppendLine(ex.Message);
+
+                try
+                {
+                    sb.AppendLine(queryConstructor.CompileQuery());
+                }
+                catch (NoColumnsException ex)
+                {
+                    sb.Clear().AppendLine(ex.Message);
+                }
             }
 
             return new StringResponse<String>(sb.ToString());

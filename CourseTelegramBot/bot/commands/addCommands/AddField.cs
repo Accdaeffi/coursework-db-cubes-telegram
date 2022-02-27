@@ -30,7 +30,16 @@ namespace CourseTelegramBot.bot.commands
             }
             else
             {
-                if (info.AddNewField(field))
+                String selector = null;
+
+                if (field.LastIndexOf(' ') > field.LastIndexOf(']'))
+                {
+                    selector = field.Substring(field.LastIndexOf(' '));
+                    field = field.Substring(0, field.LastIndexOf(' '));
+                }
+
+
+                if (info.AddNewField(field, selector))
                 {
                     responseString = "Succesfully added!";
                 }

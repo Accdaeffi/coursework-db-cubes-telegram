@@ -17,9 +17,19 @@ namespace CourseTelegramBot.bot.commands
 
         public override StringResponse<String> execute()
         {
+            String responseText;
+
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            return new StringResponse<String>(queryConstructor.ShowAll());
+            if (queryConstructor == null)
+            {
+                responseText = "Create query first!";
+            }
+            else {
+                responseText = queryConstructor.ShowAll();
+            }
+            
+            return new StringResponse<String>(responseText);
         }
     }
 }

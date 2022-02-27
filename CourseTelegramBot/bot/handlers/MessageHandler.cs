@@ -28,7 +28,7 @@ namespace CourseTelegramBot.bot
 
             if (message.Type.Equals(MessageType.Text))
             {
-                messageText = message.Text;
+                messageText = message.Text.Trim();
             }
 
             if (sender == null || message == null)

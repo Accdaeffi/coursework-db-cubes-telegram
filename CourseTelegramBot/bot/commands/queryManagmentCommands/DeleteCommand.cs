@@ -20,7 +20,7 @@ namespace CourseTelegramBot.bot.commands
         {
             String responseText;
 
-            if(MapUserInformation.DeleteValue(userId))
+            if (MapUserInformation.DeleteValue(userId))
             {
                 responseText = "Query succesfully deleted!";
             } else

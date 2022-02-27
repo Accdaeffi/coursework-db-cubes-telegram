@@ -15,10 +15,22 @@ namespace CourseTelegramBot.bot.commands
 
         public override StringResponse<String> execute()
         {
+            String responseText;
+
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            return new StringResponse<String>(Connection.getConnection()
-                                                    .executeQuery(queryConstructor.getQuery()));
+            if (queryConstructor == null)
+            {
+                responseText = "Create query first using /create command!";
+            }
+            else
+            {
+                responseText = Connection.getConnection()
+                                                    .executeQuery(queryConstructor.getQuery());
+
+            }
+
+            return new StringResponse<String>(responseText);
         }
     }
 }
