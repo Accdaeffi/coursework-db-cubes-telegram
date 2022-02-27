@@ -9,12 +9,18 @@ namespace CourseTelegramBot.query
 {
     class QueryConstructor
     {
+        private String cubeName;
 
         private readonly HashSet<String> measures = new HashSet<String>();
         private readonly HashSet<String> fields = new HashSet<String>();
         private readonly HashSet<String> whereParts = new HashSet<String>();
 
         private String query = null;
+
+        internal QueryConstructor (String cubeName)
+        {
+            this.cubeName = cubeName;
+        }
 
         #region show
         ///
@@ -195,9 +201,10 @@ namespace CourseTelegramBot.query
         }
         #endregion
 
-        public void CompileQuery()
+        public string CompileQuery()
         {
             query = QueryCompiler.compileQuery(measures, fields, whereParts);
+            return query;
         }
 
         public String getQuery()

@@ -6,20 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseTelegramBot.bot.commands
+namespace CourseTelegramBot.bot.commands.queryManagmentCommands
 {
-    class ShowQueryCommand : AbstractCommand
+    class CompileQuery : AbstractCommand
     {
-        public ShowQueryCommand(long userId)
+
+        public CompileQuery(long userId)
         {
             this.userId = userId;
         }
 
         public override StringResponse<String> execute()
         {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Compiled query:");
+            sb.AppendLine();
+
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            return new StringResponse<String>(queryConstructor.ShowAll());
+            sb.AppendLine(queryConstructor.CompileQuery());
+
+            return new StringResponse<String>(sb.ToString());
         }
     }
 }

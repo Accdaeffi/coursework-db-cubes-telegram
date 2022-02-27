@@ -10,6 +10,6 @@ namespace CourseTelegramBot.bot.commands
     abstract class AbstractCommand
     {
         protected long userId;
-        public abstract StringResponse execute();
+        public abstract AbstractResponse<String> execute();
     }
 }

@@ -1,16 +1,14 @@
 ﻿using CourseTelegramBot.bot.responses;
+using CourseTelegramBot.cubeConnection;
 using CourseTelegramBot.query;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseTelegramBot.bot.commands
 {
-    class ShowQueryCommand : AbstractCommand
+    class ExecuteCommand : AbstractCommand
     {
-        public ShowQueryCommand(long userId)
+
+        public ExecuteCommand(long userId)
         {
             this.userId = userId;
         }
@@ -19,7 +17,8 @@ namespace CourseTelegramBot.bot.commands
         {
             QueryConstructor queryConstructor = MapUserInformation.FindValue(userId);
 
-            return new StringResponse<String>(queryConstructor.ShowAll());
+            return new StringResponse<String>(Connection.getConnection()
+                                                    .executeQuery(queryConstructor.getQuery()));
         }
     }
 }

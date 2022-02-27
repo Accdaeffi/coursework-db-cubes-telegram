@@ -7,23 +7,15 @@ using Telegram.Bot;
 
 namespace CourseTelegramBot.bot.responses
 {
-    class StringResponse
+    class StringResponse<String> : AbstractResponse<String>
 	{
-		protected readonly String responseContent;
-	
-		public StringResponse(String responseContent)
-		{
-			this.responseContent = responseContent;
-		}
-
-		public String getContent()
-		{
-			return responseContent;
-		}
-
-		public void send(ITelegramBotClient sender, long chatId)
+		public StringResponse(String responseText) : base(responseText)
         {
-			sender.SendTextMessageAsync(chatId, responseContent);
         }
-	}
+
+        public override void send(ITelegramBotClient sender, long chatId)
+        {
+			sender.SendTextMessageAsync(chatId, responseContent.ToString());
+		}
+    }
 }

@@ -10,16 +10,19 @@ namespace CourseTelegramBot.bot.commands
 {
     class CreateCommand : AbstractCommand
     {
-        public CreateCommand(long userId)
+        string cubeName;
+
+        public CreateCommand(long userId, String cubeName)
         {
             this.userId = userId;
+            this.cubeName = cubeName;
         }
 
-        public override StringResponse execute()
+        public override StringResponse<String> execute()
         {
-            MapUserInformation.CreateValue(userId);
+            MapUserInformation.CreateValue(userId, cubeName);
 
-            return new StringResponse("Запрос успешно создан!");
+            return new StringResponse<String>("Query succesfully created!");
         }
     }
 }

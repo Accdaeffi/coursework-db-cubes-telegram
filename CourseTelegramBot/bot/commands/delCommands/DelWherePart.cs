@@ -18,7 +18,7 @@ namespace CourseTelegramBot.bot.commands.delCommands
             this.userId = userId;
         }
 
-        public override StringResponse execute()
+        public override StringResponse<String> execute()
         {
             String responseString;
 
@@ -40,7 +40,7 @@ namespace CourseTelegramBot.bot.commands.delCommands
                 }
             }
 
-            return new StringResponse(responseString);
+            return new StringResponse<String>(responseString);
         }
     }
 }

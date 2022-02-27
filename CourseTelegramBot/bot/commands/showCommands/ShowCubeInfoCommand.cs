@@ -17,7 +17,7 @@ namespace CourseTelegramBot.bot.commands.showCommands
             this.cubeName = cubeName;
         }
 
-        public override StringResponse execute()
+        public override StringResponse<String> execute()
         {
             String responseText;
             List<CubeInfo> cubes = Connection.getConnection().getCubesInforamtion();
@@ -46,7 +46,7 @@ namespace CourseTelegramBot.bot.commands.showCommands
                 responseText = "No cubes!";
             }
 
-            return new StringResponse(responseText);
+            return new StringResponse<String>(responseText);
         }
     }
 }
