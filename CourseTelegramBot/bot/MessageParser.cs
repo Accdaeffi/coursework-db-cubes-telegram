@@ -31,7 +31,12 @@ namespace CourseTelegramBot.bot
             AbstractCommand result;
 
             String[] messageArray = message.Split(' ', 2);
-            String command = messageArray[0];
+            String command = messageArray[0].Trim();
+            String argument = null;
+            if (messageArray.Length > 1)
+            {
+                argument = messageArray[1].Trim();
+            }
 
             try
             {
@@ -52,9 +57,9 @@ namespace CourseTelegramBot.bot
                     #region query managment commands
                     case "/create_query":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new CreateCommand(userId, messageArray[1]);
+                                result = new CreateCommand(userId, argument);
                             } else
                             {
                                 throw new NotEnoughArgumentsException();
@@ -82,9 +87,9 @@ namespace CourseTelegramBot.bot
                     #region show commands
                     case "/show_cubes":
                         {
-                            if(messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new ShowCubeInfoCommand(userId, messageArray[1]);
+                                result = new ShowCubeInfoCommand(userId, argument);
                             } else
                             {
                                 result = new ShowCubeInfoCommand(userId);
@@ -106,9 +111,9 @@ namespace CourseTelegramBot.bot
                     #region add commands
                     case "/add_field":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new AddField(userId, messageArray[1]);
+                                result = new AddField(userId, argument);
                             }
                             else
                             {
@@ -118,9 +123,9 @@ namespace CourseTelegramBot.bot
                         break;
                     case "/add_measure":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new AddMeasure(userId, messageArray[1]);
+                                result = new AddMeasure(userId, argument);
                             }
                             else
                             {
@@ -130,9 +135,9 @@ namespace CourseTelegramBot.bot
                         break;
                     case "/add_wherePart":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new AddWherePart(userId, messageArray[1]);
+                                result = new AddWherePart(userId, argument);
                             }
                             else
                             {
@@ -146,9 +151,9 @@ namespace CourseTelegramBot.bot
                     #region delete commands
                     case "/del_field":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new DelField(userId, messageArray[1]);
+                                result = new DelField(userId, argument);
                             }
                             else
                             {
@@ -158,9 +163,9 @@ namespace CourseTelegramBot.bot
                         break;
                     case "/del_measure":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new DelMeasure(userId, messageArray[1]);
+                                result = new DelMeasure(userId, argument);
                             }
                             else
                             {
@@ -170,9 +175,9 @@ namespace CourseTelegramBot.bot
                         break;
                     case "/del_wherePart":
                         {
-                            if (messageArray.Length > 1)
+                            if (argument != null)
                             {
-                                result = new DelWherePart(userId, messageArray[1]);
+                                result = new DelWherePart(userId, argument);
                             }
                             else
                             {

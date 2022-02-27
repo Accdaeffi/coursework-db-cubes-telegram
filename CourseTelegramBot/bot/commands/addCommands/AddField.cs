@@ -34,8 +34,8 @@ namespace CourseTelegramBot.bot.commands
 
                 if (field.LastIndexOf(' ') > field.LastIndexOf(']'))
                 {
-                    selector = field.Substring(field.LastIndexOf(' '));
-                    field = field.Substring(0, field.LastIndexOf(' '));
+                    selector = field.Substring(field.LastIndexOf(' ')).Trim();
+                    field = field.Substring(0, field.LastIndexOf(' ')).Trim();
                 }
 
 

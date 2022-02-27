@@ -45,18 +45,18 @@ namespace CourseTelegramBot.cubeConnection
 
             foreach (DimensionInfo dim in Dimensions)
             {
-                sb.AppendLine(String.Format("└Dimension: [%s]", dim.name));
+                sb.AppendLine(String.Format("└Dimension: [{0}]", dim.name));
 
                 foreach (String hie in dim.Hierarchies)
                 {
-                    sb.AppendLine(String.Format("   └Hierarchy: [%s]", hie));
+                    sb.AppendLine(String.Format("   └Hierarchy: [{0}]", hie));
                 }
             }
 
             sb.AppendLine("└Measures");
             foreach (String measure in Measures)
             {
-                sb.AppendLine(String.Format("   └Fact: [%s]", measure));
+                sb.AppendLine(String.Format("   └Fact: [{0}]", measure));
             }
 
             return sb.ToString();
