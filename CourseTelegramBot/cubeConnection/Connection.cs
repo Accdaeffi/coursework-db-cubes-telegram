@@ -13,13 +13,11 @@ namespace CourseTelegramBot.cubeConnection
 
         private static readonly string connectionString = "Data Source=localhost;Catalog=course_work";
         private readonly AdomdConnection connection = new AdomdConnection(connectionString);
-        private readonly CubeDef cube = null;
 
 
         private Connection()
         {
             connection.Open();
-            cube = connection.Cubes[0];
         }
 
         public static Connection getConnection()
@@ -31,12 +29,6 @@ namespace CourseTelegramBot.cubeConnection
             }
 
             return singleton;
-        }
-
-
-        public CubeDef getCube()
-        {
-            return cube;
         }
 
         public List<CubeInfo> getCubesInforamtion() {
