@@ -10,10 +10,10 @@ namespace CourseTelegramBot.query
     {
         static readonly Dictionary<long, QueryConstructor> data = new Dictionary<long, QueryConstructor>();
 
-        public static void CreateValue(long userId, string cubeName)
+        public static bool CreateValue(long userId, string cubeName)
         {
             QueryConstructor info = new QueryConstructor(cubeName);
-            data.Add(userId, info);
+            return data.TryAdd(userId, info);
         }
 
         public static QueryConstructor FindValue(long userId)

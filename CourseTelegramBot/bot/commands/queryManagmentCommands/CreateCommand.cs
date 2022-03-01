@@ -20,9 +20,17 @@ namespace CourseTelegramBot.bot.commands
 
         public override StringResponse<String> execute()
         {
-            MapUserInformation.CreateValue(userId, cubeName);
+            String responseText;
 
-            return new StringResponse<String>("Query succesfully created!");
+            if (MapUserInformation.CreateValue(userId, cubeName))
+            {
+                responseText = "Query succesfully created!";
+            } else
+            {
+                responseText = "Delete previous query first!";
+            }
+
+            return new StringResponse<String>(responseText);
         }
     }
 }

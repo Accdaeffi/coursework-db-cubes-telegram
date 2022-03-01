@@ -53,6 +53,11 @@ namespace CourseTelegramBot.bot
                             result = new HelpCommand();
                         }
                         break;
+                    case "/nota":
+                        {
+                            result = new NotaCommand();
+                        }
+                        break;
 
                     #region query managment commands
                     case "/create_query":
